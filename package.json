@@ -10,6 +10,8 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "@react-navigation/native": "^6.0.14",
+    "@react-navigation/native-stack": "^6.9.2",
     "react": "18.1.0",
     "react-native": "0.70.6",
     "react-native-vision-camera": "^2.15.2"

@@ -7,7 +7,7 @@
  */
 
 import React, { useEffect } from 'react';
-import { Camera } from 'react-native-vision-camera';
+import { Camera, useCameraDevices } from 'react-native-vision-camera';
 import type {Node} from 'react';
 import {
   SafeAreaView,
@@ -54,6 +54,19 @@ const Section = ({children, title}): Node => {
     </View>
   );
 };
+
+const CameraInterface = () => {
+  const devices = useCameraDevices('wide-angle-camera')
+  const device = devices.back
+  
+  if (device == null) return <Section />
+  return (
+    <Camera
+      style={StyleSheet.absoluteFill}
+      device={device}
+    />
+  )
+}
 
 const App: () => Node = () => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -105,6 +118,7 @@ const App: () => Node = () => {
             Read the docs to discover what to do next:
           </Section>
           <LearnMoreLinks />
+          <CameraInterface />
         </View>
       </ScrollView>
     </SafeAreaView>
